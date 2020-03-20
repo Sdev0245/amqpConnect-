@@ -177,6 +177,33 @@ src/amqpConnect.cpp.s:
 	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/amqpConnect.cpp.s
 .PHONY : src/amqpConnect.cpp.s
 
+src/streamBuffer.o: src/streamBuffer.cpp.o
+
+.PHONY : src/streamBuffer.o
+
+# target to build an object file
+src/streamBuffer.cpp.o:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/streamBuffer.cpp.o
+.PHONY : src/streamBuffer.cpp.o
+
+src/streamBuffer.i: src/streamBuffer.cpp.i
+
+.PHONY : src/streamBuffer.i
+
+# target to preprocess a source file
+src/streamBuffer.cpp.i:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/streamBuffer.cpp.i
+.PHONY : src/streamBuffer.cpp.i
+
+src/streamBuffer.s: src/streamBuffer.cpp.s
+
+.PHONY : src/streamBuffer.s
+
+# target to generate assembly for a file
+src/streamBuffer.cpp.s:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/streamBuffer.cpp.s
+.PHONY : src/streamBuffer.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -192,6 +219,9 @@ help:
 	@echo "... src/amqpConnect.o"
 	@echo "... src/amqpConnect.i"
 	@echo "... src/amqpConnect.s"
+	@echo "... src/streamBuffer.o"
+	@echo "... src/streamBuffer.i"
+	@echo "... src/streamBuffer.s"
 .PHONY : help
 
 

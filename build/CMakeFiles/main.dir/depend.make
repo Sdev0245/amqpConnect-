@@ -5,5 +5,9 @@ CMakeFiles/main.dir/connect.cpp.o: .././include/amqpConnect.h
 CMakeFiles/main.dir/connect.cpp.o: ../connect.cpp
 
 CMakeFiles/main.dir/src/amqpConnect.cpp.o: .././include/amqpConnect.h
+CMakeFiles/main.dir/src/amqpConnect.cpp.o: .././include/streamBuffer.h
 CMakeFiles/main.dir/src/amqpConnect.cpp.o: ../src/amqpConnect.cpp
+
+CMakeFiles/main.dir/src/streamBuffer.cpp.o: .././include/streamBuffer.h
+CMakeFiles/main.dir/src/streamBuffer.cpp.o: ../src/streamBuffer.cpp
 

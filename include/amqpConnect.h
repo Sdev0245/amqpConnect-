@@ -7,6 +7,7 @@ using namespace boost::asio;
 using namespace std;
 #include <amqpcpp.h>
 
+class DataStreamHandler;
 class MyConnectionHandler : public AMQP::ConnectionHandler
     {
     public:
@@ -18,11 +19,13 @@ class MyConnectionHandler : public AMQP::ConnectionHandler
         auto connect_to_endpoint(string Ip ,uint64_t port)->typename enable_if<true,void>::type ;
         virtual ~MyConnectionHandler();
         void sendData() ;
+        auto startEventLoop()->void;
     private:
         shared_ptr<ip::tcp::socket> stream_socket;
         io_context ctx;
         AMQP::Connection *amqpConnection;
         vector <char> my_buffer;
+        DataStreamHandler *buff;
 
 
     };

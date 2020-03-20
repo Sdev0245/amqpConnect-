@@ -1,6 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/main.dir/connect.cpp.o"
   "CMakeFiles/main.dir/src/amqpConnect.cpp.o"
+  "CMakeFiles/main.dir/src/streamBuffer.cpp.o"
   "main.pdb"
   "main"
 )

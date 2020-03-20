@@ -1,9 +1,22 @@
 # include <amqpConnect.h>
 # include <boost/asio.hpp>
-# include <iostream>
+# include <iostream> 
+# include <streamBuffer.h>
 using namespace std;
+class DataStreamHandler
+{
+    public:
+        streamBuffer inputBuffer;
+        streamBuffer outputBuffer;
+        DataStreamHandler():inputBuffer(8*1024*1024),outputBuffer(8*1024*1024)
+        {
 
-MyConnectionHandler::MyConnectionHandler():ctx()
+        }
+
+
+
+};
+MyConnectionHandler::MyConnectionHandler():ctx(),my_buffer(1*1024*1024,0)
 {
     stream_socket = make_shared<boost::asio::ip::tcp::socket>(ctx);
 }
@@ -56,4 +69,11 @@ void MyConnectionHandler::sendData()
 {
     stream_socket->send(buffer(my_buffer,my_buffer.size()));
    
+}
+void MyConnectionHandler::startEventLoop()
+{
+    while(true)
+    {
+        if()
+    }
 }

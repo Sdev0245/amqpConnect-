@@ -6,6 +6,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/deven/Desktop/amqp/connect.cpp" "/home/deven/Desktop/amqp/build/CMakeFiles/main.dir/connect.cpp.o"
   "/home/deven/Desktop/amqp/src/amqpConnect.cpp" "/home/deven/Desktop/amqp/build/CMakeFiles/main.dir/src/amqpConnect.cpp.o"
+  "/home/deven/Desktop/amqp/src/streamBuffer.cpp" "/home/deven/Desktop/amqp/build/CMakeFiles/main.dir/src/streamBuffer.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
