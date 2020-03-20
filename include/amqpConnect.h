@@ -5,19 +5,23 @@
 using namespace boost::asio;
 using namespace std;
 #include <amqpcpp.h>
-namespace MyConnectionHandler
-{
-    class MyConnectionHandler : public AMQP::ConnectionHandler
+
+class MyConnectionHandler : public AMQP::ConnectionHandler
     {
     public:
-
-        virtual auto onData(AMQP::Connection *connection, const char *data, size_t size)->void override;
-        virtual auto onReady(AMQP::Connection *connection)->void override; 
-        virtual auto onError(AMQP::Connection *connection, const char *message)->void override;
-        virtual auto onClosed(AMQP::Connection *connection)->void override;
+        MyConnectionHandler();
+        virtual auto onData(AMQP::Connection *connection, const char *data, size_t size)->typename enable_if<true,void>::type override;
+        virtual auto onReady(AMQP::Connection *connection)->typename enable_if<true,void>::type override; 
+        virtual auto onError(AMQP::Connection *connection, const char *message)->typename enable_if<true,void>::type override;
+        virtual auto onClosed(AMQP::Connection *connection)->typename enable_if<true,void>::type override;
+        auto connect_to_endpoint(string Ip ,uint64_t port)->typename enable_if<true,void>::type ;
+        virtual ~MyConnectionHandler();
+    private:
+        shared_ptr<ip::tcp::socket> stream_socket;
+        io_context ctx;
 
 
     };
-}
+
 
 # endif

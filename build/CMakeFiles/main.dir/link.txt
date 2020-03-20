@@ -1,0 +1,1 @@
+/usr/bin/c++    -rdynamic CMakeFiles/main.dir/connect.cpp.o CMakeFiles/main.dir/src/amqpConnect.cpp.o  -o main -lamqpcpp -lboost_timer -lboost_system -ldl -lpthread 
