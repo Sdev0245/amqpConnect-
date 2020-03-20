@@ -22,12 +22,6 @@ iostream
 vector
 -
 
-/home/deven/Desktop/amqp/connect.cpp
-amqpConnect.h
--
-iostream
--
-
 /home/deven/Desktop/amqp/src/amqpConnect.cpp
 amqpConnect.h
 -

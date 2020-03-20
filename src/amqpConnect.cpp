@@ -19,6 +19,7 @@ class DataStreamHandler
 MyConnectionHandler::MyConnectionHandler():ctx(),my_buffer(1*1024*1024,0)
 {
     stream_socket = make_shared<boost::asio::ip::tcp::socket>(ctx);
+    streamHandler = new DataStreamHandler();
 }
 
 void MyConnectionHandler::connect_to_endpoint(string ip , uint64_t port)
@@ -40,8 +41,15 @@ void MyConnectionHandler::connect_to_endpoint(string ip , uint64_t port)
 
 void MyConnectionHandler::onData(AMQP::Connection *connection, const char *data, size_t size)
 {
- 
-    
+    this->amqpConnection =connection;
+    size_t bytes_written = streamHandler->outputBuffer.copy_from_buffer(data,size);
+    if(bytes_written !=size )
+    {
+        cout << "bytes written " << bytes_written << endl;
+        this->sendData();
+        streamHandler->outputBuffer.copy_from_buffer(data+bytes_written,size-bytes_written);
+    }
+
 }
 
 void MyConnectionHandler::onReady(AMQP::Connection *connection)
@@ -67,13 +75,40 @@ MyConnectionHandler::~MyConnectionHandler()
 
 void MyConnectionHandler::sendData()
 {
-    stream_socket->send(buffer(my_buffer,my_buffer.size()));
-   
+    stream_socket->send(buffer(streamHandler->outputBuffer.get_data(),streamHandler->outputBuffer.available_bytes()));
+    streamHandler->outputBuffer.drain_buffer();
+    
 }
 void MyConnectionHandler::startEventLoop()
 {
-    while(true)
+    while(1)
     {
-        if()
+        if(stream_socket->available() > 0)
+        {
+            
+            int bytes = stream_socket->available();
+            if(my_buffer.size() < bytes)
+                my_buffer.resize(bytes,0);
+            size_t received = stream_socket->receive(buffer(my_buffer,bytes));
+            streamHandler->inputBuffer.copy_from_buffer(&my_buffer[0],received);
+            
+            
+        }
+        if(streamHandler->inputBuffer.available_bytes()>0)
+        {
+            size_t parsed_bytes = amqpConnection->parse(streamHandler->inputBuffer.get_data(),
+            streamHandler->inputBuffer.available_bytes());
+            if(parsed_bytes == streamHandler->inputBuffer.available_bytes())
+                streamHandler->inputBuffer.drain_buffer();
+            else if(parsed_bytes > 0 )
+            {
+                streamHandler->inputBuffer.amqp_parse_next_bytes(parsed_bytes);
+            }
+            
+        }
+
+        this->sendData();
+        this_thread::sleep_for(std::chrono::milliseconds(10));
+
     }
 }

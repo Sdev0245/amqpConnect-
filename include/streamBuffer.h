@@ -12,6 +12,7 @@ class streamBuffer
         const char * get_data();
         void drain_buffer();
         size_t available_bytes();
+        void amqp_parse_next_bytes(size_t parsed_bytes);
 
     private:
         vector <char> Buffer;

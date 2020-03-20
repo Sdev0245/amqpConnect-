@@ -25,7 +25,7 @@ class MyConnectionHandler : public AMQP::ConnectionHandler
         io_context ctx;
         AMQP::Connection *amqpConnection;
         vector <char> my_buffer;
-        DataStreamHandler *buff;
+        DataStreamHandler *streamHandler;
 
 
     };
