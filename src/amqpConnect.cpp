@@ -27,11 +27,13 @@ void MyConnectionHandler::connect_to_endpoint(string ip , uint64_t port)
 
 void MyConnectionHandler::onData(AMQP::Connection *connection, const char *data, size_t size)
 {
-    cout << data << endl;
+ 
+    
 }
 
 void MyConnectionHandler::onReady(AMQP::Connection *connection)
 {
+    cout << "ready_to_send_data" << endl;
 
 }
 
@@ -44,7 +46,14 @@ void MyConnectionHandler::onClosed(AMQP::Connection *connection)
     if(!ctx.stopped())
         ctx.stop();
 }
+
 MyConnectionHandler::~MyConnectionHandler()
 {
-    
+
+}
+
+void MyConnectionHandler::sendData()
+{
+    stream_socket->send(buffer(my_buffer,my_buffer.size()));
+   
 }

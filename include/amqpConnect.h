@@ -2,6 +2,7 @@
 # define MY_CONNECTION_H
 # include <boost/asio.hpp>
 # include <iostream>
+# include <vector>
 using namespace boost::asio;
 using namespace std;
 #include <amqpcpp.h>
@@ -16,9 +17,12 @@ class MyConnectionHandler : public AMQP::ConnectionHandler
         virtual auto onClosed(AMQP::Connection *connection)->typename enable_if<true,void>::type override;
         auto connect_to_endpoint(string Ip ,uint64_t port)->typename enable_if<true,void>::type ;
         virtual ~MyConnectionHandler();
+        void sendData() ;
     private:
         shared_ptr<ip::tcp::socket> stream_socket;
         io_context ctx;
+        AMQP::Connection *amqpConnection;
+        vector <char> my_buffer;
 
 
     };
