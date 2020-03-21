@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.0.0 FATAL_ERROR)
+project(amqp VERSION 0.1.0 )
+include_directories(./include)
+set(PROJECT_LIBS -lamqpcpp -lboost_timer -lboost_system -ldl -lpthread)
+add_executable(send send.cpp ./src/amqpConnect.cpp ./src/streamBuffer.cpp)
+target_link_libraries(send ${PROJECT_LIBS})

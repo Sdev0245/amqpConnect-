@@ -1,0 +1,3 @@
+/home/deven/Desktop/amqp/receive/build/CMakeFiles/rebuild_cache.dir
+/home/deven/Desktop/amqp/receive/build/CMakeFiles/receive.dir
+/home/deven/Desktop/amqp/receive/build/CMakeFiles/edit_cache.dir

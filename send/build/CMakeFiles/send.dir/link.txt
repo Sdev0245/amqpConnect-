@@ -1,0 +1,1 @@
+/usr/bin/c++    -rdynamic CMakeFiles/send.dir/send.cpp.o CMakeFiles/send.dir/src/amqpConnect.cpp.o CMakeFiles/send.dir/src/streamBuffer.cpp.o  -o send -lamqpcpp -lboost_timer -lboost_system -ldl -lpthread 

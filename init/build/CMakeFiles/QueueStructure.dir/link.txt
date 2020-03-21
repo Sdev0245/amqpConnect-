@@ -1,0 +1,1 @@
+/usr/bin/c++    -rdynamic CMakeFiles/QueueStructure.dir/QueueStructure.cpp.o CMakeFiles/QueueStructure.dir/src/amqpConnect.cpp.o CMakeFiles/QueueStructure.dir/src/streamBuffer.cpp.o  -o QueueStructure -lamqpcpp -lboost_timer -lboost_system -ldl -lpthread 

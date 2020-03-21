@@ -1,0 +1,3 @@
+/home/deven/Desktop/amqp/init/build/CMakeFiles/rebuild_cache.dir
+/home/deven/Desktop/amqp/init/build/CMakeFiles/QueueStructure.dir
+/home/deven/Desktop/amqp/init/build/CMakeFiles/edit_cache.dir
